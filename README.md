@@ -1,5 +1,5 @@
 # Search-engine
-This is a search-engine based on Google and Bing.
+This is a search-engine made with Nodejs, EJS, Axios and a free API. It is based on Google and Bing.
 It uses the Google search API. 
 https://rapidapi.com/apigeek/api/google-search3/
 
