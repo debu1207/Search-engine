@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    
+    <style>
+        #btn {
+            margin: 7px 5px 1px 5px;
+            padding: 3px 5px 6px 5px;
+            background-color: rgb(7, 178, 38);
+            color: whitesmoke;
+            font-size: 20px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border-radius: 25px;
+            border-style: none;
+        }
+        input {
+            width: 350px;
+            font-size: 20px;
+            border-radius: 15px;
+            border-style:none;
+            box-shadow:rgba(0, 0, 0, 0.4) 2px 2px 3px;
+        }
+        input:hover{
+            box-shadow:rgba(0, 0, 0, 0.4) 4px 4px 4px;
+        }
+        input:focus {outline:none;}
+        #input-query {
+            color: rgba(4, 12, 12, 0.849);
+            padding: 4px 7px 4px 10px;
+        }
+        #search{
+            margin: 20px 30px 10px 70px;
+            padding-left: 5px;
+        }
+        #main {
+            width: 850px;
+            margin: 10px 30px 10px 30px;
+            padding: 20px 7px 20px 7px;
+            
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #link {
+            color:rgb(12, 130, 34);
+        }
+        #search a{
+            font-size: 12px;
+            text-decoration: none;
+            color: grey;
+        }
+        #main a{
+            font-size: 20px;
+            text-decoration: none;
+            color:rgba(4, 12, 12, 0.849);
+        }
+        #navbar-ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #navbar-li {
+            float: left;
+            text-decoration: none;
+        }
+
+        #navbar-li a {
+            display: block;
+            padding: 8px;
+        }  
+    </style>
+</head>
+<body>
+    <div id="search">
+        <form id="form" action="/news" method="post">
+            <input id="input-query" name="query" palceholder="search" value="<%= rawquery %>">
+            <button id="btn" type="submit">Go</button>
+        </form>
+        <p>Search results for "<%= rawquery %>"</p>
+        <ul id="navbar-ul">
+            <li id="navbar-li"><a href="/">ALL</a></li>
+            <li id="navbar-li"><a href="/image">IMAGES</a></li>
+            <li id="navbar-li"><a href="#contact">VIDEOS</a></li>
+            <li id="navbar-li"><a href="#about">NEWS</a></li>
+        </ul>
+    </div>
+    <hr>
+    <ul>
+        <% data.forEach(function(result) { %>
+            <div id="main">
+                <li> <a href= "<%= result.link %>" target="_blank"> <b><%= result.title %></b> </a></li>
+                <li> Published: <%= result.published %> Source: <%= result.source.title %> </li>
+            </div>
+        <% }); %> 
+    </ul>
+
+</body>
+</html>
